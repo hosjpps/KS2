@@ -134,12 +134,13 @@ public class MayCalendarForm : Form
 
     private void ButtonCheck_Click(object sender, EventArgs e)
     {
-        if (int.TryParse(textBoxDay.Text, out int day))
+        int day;
+        if (int.TryParse(textBoxDay.Text, out day))
         {
             if (day >= 1 && day <= 31)
             {
                 bool isHoliday = IsHoliday(day);
-                labelResult.Text = $"День {day} мая: {(isHoliday ? "ВЫХОДНОЙ" : "РАБОЧИЙ")}";
+                labelResult.Text = string.Format("День {0} мая: {1}", day, isHoliday ? "ВЫХОДНОЙ" : "РАБОЧИЙ");
                 labelResult.ForeColor = isHoliday ? Color.Red : Color.Green;
             }
             else
